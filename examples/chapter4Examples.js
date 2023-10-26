@@ -189,3 +189,5 @@ function remove(array, index) {
   let y = 8;
 
   console.log(x.concat(y))
+
+ 
