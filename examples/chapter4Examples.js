@@ -178,6 +178,8 @@ for (let entry of journal){
 console.log("peanut teeth: ", phi(tableFor("peanut teeth", journal)));
 */
 
+/*
+//--------- Array methods --------------
 function remove(array, index) {
     return array.slice(0, index)
     .concat(array.slice(index + 1));
@@ -189,5 +191,126 @@ function remove(array, index) {
   let y = 8;
 
   console.log(x.concat(y))
+*/
 
- 
+/*
+//---------------- Exercises ------------------
+
+//--------- The Sum Of A Range----------
+
+function range (x,y,z = 1){
+    let array = [];
+    for(let i = x ; i <= y ; i += z){
+        array.push(i);
+    }
+    return array;
+}
+
+//console.log(range(-8,10))
+
+function sum(array){
+    let sum = 0;
+    for(let number of array){
+        sum = sum + number;
+    }
+    return sum;
+}
+
+
+
+//-------------Reversing an Array ---------
+let array = range(0,10);
+
+reverseArray = (array) =>{
+    let reverse = [];
+    for (let i = 0; i < array.length; i++){
+        reverse.unshift(array[i]);
+    }
+    return reverse;
+}
+console.log(array);
+array = reverseArray(array);
+console.log(array);
+*/
+
+//----------- A List ---------------
+/*
+let list = {
+    value: 1,
+    rest: {
+      value: 2,
+      rest: {
+        value: 3,
+        rest: null
+      }
+    }
+  };
+
+//console.log(list);
+
+list = {value: 0, rest: list};
+list = {value: -1, rest: list};
+//console.log(list);
+
+//Converts an array to a List of nested objects
+arrayToList = (array) => {
+    let list = {};
+    for(let i = array.length -1; i>=0 ; i--){
+        list = {value: array[i],
+                rest: list}
+    }
+    return list;
+}
+
+//console.log(arrayToList([1,2,3]))
+
+let newList = arrayToList([1,2,3]);
+
+// Converts a nested list object into an array of its values.
+listToArray = (list) => {
+    let array = [];
+    for( let node = list; node; node = node.rest){
+        if(node.value !== undefined) array.push(node.value); 
+    }
+    return array;
+}
+
+// Adds an element to the start of a nested list
+prepend = (element, list) => {
+    list = { value : element,
+            rest : list}
+    return list;
+}
+
+// Finds the value of a specific object within the list.
+nth = (list, n) => {
+    if(!list) return undefined;
+    else if (n == 0) return list.value;
+    else return nth(list.rest, n-1)
+}
+
+console.log(prepend(6,arrayToList([1,2,3])));
+*/
+
+//--------------- Deep Comparasion ---------------
+// This exercise is to build a function that compares the properties of two objects to see if they match.
+
+let obj = {here: {is: "an"}, object: 2}
+
+
+deepEqual =(a, b) => {
+    if(a === b) return true; //If they are pointing to the exactly the same space in memory return true.
+    if(a == null || typeof a != 'object' || b == null || typeof b != 'object') return false; //If either of them is not an object return false
+
+    let keysA = Object.keys(a);
+    let keysB = Object.keys(b);
+
+    if(keysA.length != keysB.length) return false; // If the number of keys are not the same return false
+
+    for(let key of keysA){
+        if(!keysB.includes(key) || !deepEqual(a[key], b[key])) return false; // goes through each key to see if its contained in second object, and then if it does the value it holds matches.
+    }
+    return true;
+}
+
+console.log(deepEqual(obj))
