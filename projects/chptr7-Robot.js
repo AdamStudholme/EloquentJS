@@ -1,4 +1,3 @@
-
 // building a mail delivery robot for a smal town to drop off parcels, the village is represented
 // by the array roads below. This array is know as a grpah, which is a collection of points with lines
 // between them, this will allow the robot to move between them:
@@ -122,7 +121,7 @@ VillageState.random = function(parcelCount = 5){
     return new VillageState("Post Office", parcels);
 }
 
-//runRobot(VillageState.random(), randomRobot);
+animation.runRobotAnimation(VillageState.random(), randomRobot);
 
 //---------- Improving the route choice decision making
 // Using the mail trucks route method - find a route that goes past all addresses and complete it twice.

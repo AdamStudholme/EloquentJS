@@ -120,7 +120,7 @@
     }
   }
 
-  window.runRobotAnimation = function(worldState, robot, robotState) {
+    window.runRobotAnimation = function(worldState, robot, robotState) {
     if (active && active.timeout != null)
       clearTimeout(active.timeout)
     active = new Animation(worldState, robot, robotState)
